@@ -1,0 +1,500 @@
+/*body {
+	overflow-y:scroll;
+}*/
+.VER_wrapper, .VER_wrapper * {
+    box-sizing: border-box;
+}
+
+/* レイアウト設定
+-------------------------------------------------------------- */
+.VER_wrapper {
+	width:90% !important;
+	margin:0 auto;
+	border:1px solid #cbd3dc;
+	overflow:hidden;
+}
+.VER_left_upper {
+	display: inline-block;
+	box-sizing: border-box;
+	overflow:hidden;
+}
+
+.VER_time_table_wrapper {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 85%;
+	overflow:hidden;
+}
+
+.VER_time_table {
+	height:100%;
+	white-space:nowrap;
+}
+
+.VER_time_table div {
+	display:inline-block;
+	border-right:1px #cbd3dc dotted;
+	height:100%;
+}
+.VER_schedule {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	overflow:hidden;
+	/*margin-top: -6px;*/
+}
+.VER_schedule_scroll_wrapper {
+    height: 600px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.VER_locations {
+	display: table;
+	box-sizing: border-box;
+	float:left;
+}
+.VER_locations .one_location {
+	display:table-row;
+}
+
+.VER_locations .one_location span {
+	display:table-cell;
+	vertical-align:middle;
+	border-bottom:1px solid #cbd3dc;
+	height:120px;
+	background: #fffceb;
+	padding: 10px;
+}
+.VER_event {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 85%;
+	overflow:hidden;
+	overflow-x: scroll;
+	white-space:nowrap;
+	font-size: 95%;
+}
+.VER_event .event_in_location {
+	height:120px;
+	width:max-content;
+	border-bottom:1px solid #cbd3dc;
+	position:relative;
+}
+.VER_event .event_in_location .time_mat {
+	display:inline-block;
+	height:100%;
+	box-sizing:content-box;
+}
+.VER_event .time_mat.half {
+	border-right:1px dashed #e0e6ee;
+}
+
+.VER_event .time_mat.hour {
+	border-right:1px solid #cbd3dc;
+}
+
+.VER_wrapper .first_col {
+	border-right:1px solid #cbd3dc;
+	text-align:center;
+	width:15%
+}
+
+.VER_wrapper .first_row {
+	border-bottom:1px solid #cbd3dc;
+	text-align:center;
+	height:40px;
+	vertical-align: top;
+}
+
+/* 日付切り替え
+-------------------------------------------------------------- */
+#VER_date_button {
+    text-align: center;
+    width: 90%;
+    margin: 0 auto 20px;
+}
+#VER_date_button button {
+    width: 48%;
+    margin: 0 0.8%;
+    font-family: 'Raleway', "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "メイリオ" , Meiryo , "Meiryo UI" , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
+    position: relative;
+    font-weight: bold;
+    font-size: 140%;
+    letter-spacing: 0.1em;
+    padding: 10px 20px;
+	border: 2px solid #0c559a;
+	color: #0c559a;
+	background: #fff;
+}
+#VER_date_button button:hover {
+	cursor: pointer;
+}
+#VER_date_button button.active {
+	color: #fff;
+    background: #0c559a;
+}
+#VER_date_button button.active::after {
+	top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(12, 85, 154, 0);
+    border-top-color: #0c559a;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+/* テーブル内セル設定
+-------------------------------------------------------------- */
+/*会場・時間*/
+.VER_time_table, .VER_wrapper .first_col {
+    font-weight: bold;
+}
+.VER_wrapper .first_col {
+    font-size: 95%;
+}
+.VER_time_table {
+    font-size: 115%;
+}
+.VER_time_table div, .VER_left_upper {
+    background: #ebf5ff;
+}
+.VER_left_upper br {
+    display: none;
+}
+
+/* 各イベント項目
+-------------------------------------------------------------- */
+.VER_event .event_in_location .event_box {
+	position:absolute;
+	height:119px;
+	background-color:#f5f5f5;
+	overflow:hidden;
+	transition: all .3s;
+}
+.VER_event .event_in_location .event_box:hover {
+    cursor: pointer;
+    background-color: #e6e7e8;
+}
+.VER_event .event_in_location p {
+	margin:0 0 5px;
+	padding:0;
+}
+.VER_event .event_in_location p:not(.cat_color) {
+    padding: 0 10px;
+    font-size: 95%;
+	line-height: 1.2;
+}
+.VER_event .event_in_location p.cat_color {
+	height: 6px;
+	margin-bottom: 6px;
+}
+.VER_event .event_in_location p.time,
+.VER_event .event_in_location p.mark {
+    display: inline-block;
+    font-size: 103%;
+    color: #464646;
+}
+.VER_event .event_in_location p.tags {
+    display: table;
+    background: #fff;
+    font-weight: bold;
+    font-size: 80%;
+    margin: 0 10px 5px;
+    padding: 0 8px 0 6px;
+    line-height: 1.6;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid #0c559a;
+}
+.VER_event .event_in_location p.title {
+    font-size: 105%;
+    font-weight: bold;
+    color: #0c559a;
+}
+.VER_event .event_in_location p.btn {
+    display: block;
+    margin: 8px 10px 0;
+    background: #656464;
+    border-radius: 30px;
+    padding: 1px 5px;
+    max-width: 180px;
+    text-align: center;
+    font-size: 90%;
+    color: #fff;
+    letter-spacing: -0.06em;
+	transition: all .3s;
+	border: 1px solid #656464;
+}
+.VER_event .event_in_location .event_box:hover p.btn {
+	background: #fff;
+	color: #656464;
+}
+
+/* 項目クリックでの詳細表示
+-------------------------------------------------------------- */
+.VER_event .event_detail_mask {
+	display:none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: #000000;
+	opacity: 0.5;
+}
+.VER_event .event_detail_box {
+	display:none;
+	position: fixed;
+	background-color: #fff;
+	left: 0;
+	top: 0;
+	z-index: 50;
+	width: 100%;
+	height: 500px;
+	text-align: center;
+	font-size: 110%;
+	white-space:normal;
+	overflow-y:scroll;
+}
+.VER_event .event_in_location .event_detail_box p {
+	line-height: 1.5;
+	margin: 0 0 15px;
+}
+.VER_event .event_in_location .event_detail_box p.time,
+.VER_event .event_in_location .event_detail_box p.mark {
+    font-weight: bold;
+}
+.VER_event .event_in_location .event_detail_box p.time {
+	position: relative;
+	padding: 0 0 0 20px;
+}
+.VER_event .event_in_location .event_detail_box p.time::before {
+    position: absolute;
+    display: inline-block;
+    margin-top: -1px;
+    content: "\f017";
+    font-family: 'FontAwesome';
+    left: 0;
+    font-size: 120%;
+}
+.VER_event .event_in_location .event_detail_box p.tags {
+    display: inline-block;
+}
+.VER_event .event_in_location .event_detail_box p.cat_name,
+.VER_event .event_in_location .event_detail_box p.label {
+    font-size: 90%;
+    margin-bottom: 5px;
+}
+.VER_event .event_in_location .event_detail_box p.location {
+    position: relative;
+    display: table;
+    padding: 0 0 0 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.VER_event .event_in_location .event_detail_box p.location::before {
+    position: absolute;
+    display: inline-block;
+    margin-top: -2px;
+    content: "\f041";
+    font-family: 'FontAwesome';
+    left: 0;
+    font-size: 130%;
+}
+.VER_event .event_in_location .event_detail_box p.event_detail.description {
+    margin-top: 30px;
+}
+.VER_event .event_in_location .event_detail_box p.title {
+	font-size: 120%;
+}
+
+.VER_event .event_in_location .event_detail_box p.url {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+ /* スクロールバー
+-------------------------------------------------------------- */
+.VER_wrapper {
+	position: relative;
+ }
+.VER_scrollbar {
+    width: 85%;
+    margin: 0 auto;
+    background-color: #ebf5ff;
+    height: 20px;
+    margin-left: 15%;
+}
+.VER_scrollbar::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 21px;
+    left: 0;
+    background: #ebf5ff;
+}
+.VER_arrow {
+	width:5%;
+	text-align:center;
+	box-sizing: border-box;
+	background-color:#5c6974;
+	color:#ffffff;
+	display:inline-block;
+	vertical-align:top;
+	height:100%;
+	position: relative;
+}
+.VER_arrow::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    content: "";
+    left: 50%;
+    margin-left: -3px;
+    width: 6px;
+    height: 6px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.VER_arrow.scroll_next::before {
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+.VER_arrow.scroll_prev::before {
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+}
+.VER_bar_wrap {
+	width:90%;
+	height:100%;
+	box-sizing: border-box;
+	display:inline-block;
+	vertical-align:top;
+	position:relative;
+	background-color: #d6e1ec;
+	box-shadow: inset 0 0 3px #ccd6e0;
+}
+.VER_bar {
+    position: absolute;
+    width: 15%;
+    height: 14px;
+    box-sizing: border-box;
+    top: 3px;
+    left: 0px;
+    background-color: #afc1d4;
+}
+.VER_bar.ui-draggable-dragging {
+    background-color: #7f9ab5;
+}
+
+.divide_column_first{
+    height: 59px !important;
+    margin-top: 60px;
+}
+.divide_column_next{
+    height: 59px !important;
+}
+@media only screen and (max-width:1023px) {
+	.VER_schedule_scroll_wrapper {
+		height:300px;
+	}
+	.VER_scrollbar {
+		width: 76%;
+		margin-left: 24%;
+	}
+	.VER_wrapper .first_col {
+		width:24%
+	}
+	.VER_scrollbar {
+		width: 76%;
+	}
+	.VER_time_table_wrapper {
+		width: 76%;
+	}
+	.VER_event {
+		width: 76%;
+	}
+	.VER_wrapper .first_row {
+		font-size: 70%;
+	}
+	.VER_locations .one_location span {
+		font-size:80%;
+		height:80px;
+	}
+	.VER_locations .one_location {
+		font-size:80%;
+		height:80px;
+	}
+	.VER_event .event_in_location {
+		font-size:80%;
+		height:80px;
+	}
+	.VER_event .event_in_location .event_box {
+		font-size:80%;
+		height:79px;
+	}
+    .divide_column_first{
+        height: 39px !important;
+        margin-top: 40px;
+    }
+    .divide_column_next{
+        height: 39px !important;
+    }
+	.VER_left_upper br {
+		display: block;
+	}
+	.VER_time_table div, .VER_left_upper {
+		line-height: 1;
+		height: 100%;
+	}
+	.VER_time_table div {
+		padding-top: 10px;
+	}
+	.VER_event .event_in_location p {
+		margin: 0 0 2px;
+	}
+	.VER_event .event_in_location p.btn {
+		margin: 2px 10px 0;
+	}
+	.VER_bar {
+		width:25%;
+	}
+
+}
+@media print, screen and (max-width: 640px) {
+	#VER_date_button button {
+		font-size: 100%;
+	}
+}
+
+
+/*-------------------------------------*/
+.close-icon{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 21px;
+	color: gray;
+	padding: 5px;
+	cursor: pointer;
+	border-radius: 4px;
+	background-color: lightgray;
+	padding: 5px 10px;
+}
+.event_detail_box::-webkit-scrollbar{
+    display: none;
+}
+.event_detail_box{
+    -ms-overflow-style: none;
+}
+.event_detail a{
+	color:#357ae8 !important;
+}
+
+
