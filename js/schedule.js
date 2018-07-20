@@ -223,7 +223,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
                     var height = (defaultHeightCard/listDuplicate.length) -1
                     for(var i in listDuplicate){
                         $(listDuplicate[i][1]).css({'height':height,'margin-top':i*height})
-                        if(listDuplicate.length>1){
+                        if(listDuplicate.length>2){
                             $(listDuplicate[i][1].getElementsByClassName('divider_card')).css({'display':'inline-flex'})
                             $(listDuplicate[i][1].getElementsByClassName('title')).css({'font-size':10,'line-height':"22px",'padding':0})
                         }
