@@ -207,8 +207,6 @@ if(!MIRAI.main) {MIRAI.main = {};}
                             listCardEvent = listCardEvent + html[1].outerHTML;
                         }
 
-
-
                         listDetailEvent = listDetailEvent + func.detailEventTemplate.format(
                             "16"+count,
                             events.eventOn16th[key][i].start + " ~ " + events.eventOn16th[key][i].end,
@@ -217,7 +215,6 @@ if(!MIRAI.main) {MIRAI.main = {};}
                             events.eventOn16th[key][i].name
                         )
                         count++
-
                     }
 
                     var height = (defaultHeightCard/listDuplicate.length) -1
@@ -235,10 +232,6 @@ if(!MIRAI.main) {MIRAI.main = {};}
                         " my_width='"+widthLocation16+"'>"
                         +listCardEvent+listDetailEvent+borderHtml16+"</div>")
                 }
-
-
-
-
             },
             error: function(error) {
                 console.log(error);
@@ -268,9 +261,6 @@ if(!MIRAI.main) {MIRAI.main = {};}
         }
         return event
     }
-
-
-
 
     func.locationTemplate = `
     <div class='one_location'>
@@ -311,7 +301,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
         <p class='event_detail cat_color' style='background-color:#5e9516'></p>
         <div class="divider_card">
             <p class='event_detail time'>{2}</p>
-            <p class='event_detail title title_card' style="width: {1}">{3}</p>
+            <p class='event_detail title title_card' style="width: {1};">{3}</p>
         </div>
         
     </div>
@@ -323,10 +313,10 @@ if(!MIRAI.main) {MIRAI.main = {};}
     <div event_id='even_id_is_{0}' style="height: 450px" class='event_detail_box'>
 	<p class='event_detail cat_color' style='background-color:#cddc39;'></p>
 	 <i class="fas fa-times close-icon" event_id='even_id_is_{0}' onClick='VisionEventRegist.func.CloseDetail(this);'></i>
-	<p class='event_detail time'>{1}</p>
-	<p class='event_detail location'>{2}</p>
+	<p class='event_detail time'><i class="fas fa-clock" style="padding-right: 5px"> </i>{1}</p>
+	<p class='event_detail location'><i class="fas fa-map-marker-alt" style="padding-right: 5px"></i>{2}</p>
 	<p class='event_detail title'>{4}</p>
-	<p class='event_detail description'>{3}</p>
+	<p class='event_detail description' style="text-align: left;padding-left: 30px;padding-right: 30px;">{3}</p>
 </div>
     `
 

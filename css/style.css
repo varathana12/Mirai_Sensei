@@ -277,8 +277,8 @@
     position: absolute;
     display: inline-block;
     margin-top: -1px;
-    content: "\f017";
-    font-family: 'FontAwesome';
+    #content: "\f017";
+    #font-family: 'FontAwesome';
     left: 0;
     font-size: 120%;
 }
@@ -301,8 +301,8 @@
     position: absolute;
     display: inline-block;
     margin-top: -2px;
-    content: "\f041";
-    font-family: 'FontAwesome';
+    #content: "\f041";
+    #font-family: 'FontAwesome';
     left: 0;
     font-size: 130%;
 }
