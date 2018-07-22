@@ -104,6 +104,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
                     var listCardEvent = "";
                     var listDetailEvent =""
                     var next = false
+                    var listDuplicate=[]
                     for(var i in events.eventOn15th[key]){
                        var timeStart = moment.duration(events.eventOn15th[key][i].start).asHours();
                        var timeEnd = moment.duration(events.eventOn15th[key][i].end).asHours();
@@ -113,7 +114,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
 
 
-                        var html = func.cardEventTemplate.format(
+                        var html = func.cardEventMultipleTemplate.format(
                             left+"px",
                             duration+"px",
                             events.eventOn15th[key][i].start + " ~ " + events.eventOn15th[key][i].end,
@@ -121,23 +122,28 @@ if(!MIRAI.main) {MIRAI.main = {};}
                             "15"+count
                         )
                         html = $.parseHTML(html)
-                        if(next){
-                            $(html[1]).addClass('divide_column_next')
-                            next= false
-                        }
+                        if(duration<100) {
+                            $(html[1].getElementsByClassName('time')).css({'padding': 2})
+                            $(html[1].getElementsByClassName('title')).css({'font-size': 10})
 
-                        if(parseInt(i)+1 < events.eventOn15th[key].length){
+                        }
+                        if(next){
+                            next= false
+                            listDuplicate.push(html)
                             if(timeEnd > moment.duration(events.eventOn15th[key][parseInt(i)+1].start).asHours()){
-                                $(html[1]).addClass('divide_column_first')
                                 next = true
                             }
 
                         }
+                        else if(parseInt(i)+1 < events.eventOn15th[key].length){
+                            if(timeEnd > moment.duration(events.eventOn15th[key][parseInt(i)+1].start).asHours()){
+                                next = true
+                                listDuplicate.push(html)
+                            }
 
-                        if(duration<100) {
-                            $(html[1].getElementsByClassName('time')).css({'padding': 2})
-                            $(html[1].getElementsByClassName('title')).css({'font-size': 10,"padding":0})
-
+                        }
+                        else{
+                            listCardEvent = listCardEvent + html[1].outerHTML;
                         }
 
                         listCardEvent = listCardEvent + html[1].outerHTML
@@ -183,11 +189,9 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
                         }
                         if(next){
-                            //$(html[1]).addClass('divide_column_next')
                             next= false
                             listDuplicate.push(html)
                             if(timeEnd > moment.duration(events.eventOn16th[key][parseInt(i)+1].start).asHours()){
-                                //$(html[1]).addClass('divide_column_first')
                                 next = true
 
                             }
@@ -219,7 +223,12 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
                     var height = (defaultHeightCard/listDuplicate.length) -1
                     for(var i in listDuplicate){
-                        $(listDuplicate[i][1]).css({'height':height,'margin-top':i*height})
+                        if(i >0){
+                            $(listDuplicate[i][1]).css({'height':height,'margin-top':(i*height)+1})
+                        }else{
+                            $(listDuplicate[i][1]).css({'height':height,'margin-top':i*height})
+                        }
+
                         if(listDuplicate.length>2){
                             $(listDuplicate[i][1].getElementsByClassName('divider_card')).css({'display':'inline-flex'})
                             $(listDuplicate[i][1].getElementsByClassName('title')).css({'font-size':10,'line-height':"22px",'padding':0})
@@ -241,12 +250,15 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
 
     func.sortLocation = function(a,b) {
-        if (a.location < b.location)
+
+
+        if (func.cleanString(a.location) < func.cleanString(b.location))
             return -1;
-        if (a.location > b.location)
+        if (func.cleanString(a.location) > func.cleanString(b.location))
             return 1;
         return 0;
     }
+
      func.compare = function(a,b) {
         if (a.start < b.start)
             return -1;
@@ -261,6 +273,24 @@ if(!MIRAI.main) {MIRAI.main = {};}
         }
         return event
     }
+    func.cleanString = function(location){
+        var clean =location.replace("【","")
+        clean = clean.replace("】","")
+
+        clean = clean.replace(new RegExp('0','g'),String.fromCharCode(65296))
+        clean = clean.replace(new RegExp('1','g'),String.fromCharCode(65297))
+        clean = clean.replace(new RegExp('2','g'),String.fromCharCode(65298))
+        clean = clean.replace(new RegExp('3','g'),String.fromCharCode(65299))
+        clean = clean.replace(new RegExp('4','g'),String.fromCharCode(65300))
+        clean = clean.replace(new RegExp('5','g'),String.fromCharCode(65301))
+        clean = clean.replace(new RegExp('6','g'),String.fromCharCode(65302))
+        clean = clean.replace(new RegExp('7','g'),String.fromCharCode(65303))
+        clean = clean.replace(new RegExp('8','g'),String.fromCharCode(65304))
+        clean = clean.replace(new RegExp('9','g'),String.fromCharCode(65305))
+
+        return clean;
+    }
+
 
     func.locationTemplate = `
     <div class='one_location'>
@@ -298,7 +328,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
     func.cardEventMultipleTemplate=`
     <div class='event_box' style='left:{0}; width:{1};' event_id='even_id_is_{4}' onClick='VisionEventRegist.func.OpenDetail(this);'>
-        <p class='event_detail cat_color' style='background-color:#5e9516'></p>
+        <p class='event_detail cat_color' style='background-color:#9b59b6'></p>
         <div class="divider_card">
             <p class='event_detail time'>{2}</p>
             <p class='event_detail title title_card' style="width: {1};">{3}</p>
@@ -310,12 +340,12 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
     func.detailEventTemplate = `
     <div event_id='even_id_is_{0}' class='event_detail_mask' onClick='VisionEventRegist.func.CloseDetail(this);'></div>
-    <div event_id='even_id_is_{0}' style="height: 450px" class='event_detail_box'>
-	<p class='event_detail cat_color' style='background-color:#cddc39;'></p>
-	 <i class="fas fa-times close-icon" event_id='even_id_is_{0}' onClick='VisionEventRegist.func.CloseDetail(this);'></i>
-	<p class='event_detail time'><i class="fas fa-clock" style="padding-right: 5px"> </i>{1}</p>
-	<p class='event_detail location'><i class="fas fa-map-marker-alt" style="padding-right: 5px"></i>{2}</p>
-	<p class='event_detail title'>{4}</p>
+    <div event_id='even_id_is_{0}' style="height: 450px;text-align: left" class='event_detail_box'>
+	<p class='event_detail cat_color' style='background-color:#9b59b6;'></p>
+	 <p><i class="fas fa-times close-icon" event_id='even_id_is_{0}' onClick='VisionEventRegist.func.CloseDetail(this);'></i></p>
+	<p class='event_detail time' style="width: 100%;text-align: center"><i class="fas fa-clock" style="padding-right: 5px;"> </i>{1}</p>
+	<p class='event_detail location' style="text-align: center;width: 100%"><i class="fas fa-map-marker-alt" style="padding-right: 5px"></i>{2}</p>
+	<p class='event_detail title' style="text-align: center;width: 100%">{4}</p>
 	<p class='event_detail description' style="text-align: left;padding-left: 30px;padding-right: 30px;">{3}</p>
 </div>
     `

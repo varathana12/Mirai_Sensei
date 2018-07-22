@@ -122,8 +122,8 @@
     font-size: 140%;
     letter-spacing: 0.1em;
     padding: 10px 20px;
-	border: 2px solid #0c559a;
-	color: #0c559a;
+	border: 2px solid #3498db;
+	color: #3498db;
 	background: #fff;
 }
 #VER_date_button button:hover {
@@ -131,7 +131,7 @@
 }
 #VER_date_button button.active {
 	color: #fff;
-    background: #0c559a;
+    background: #3498db;
 }
 #VER_date_button button.active::after {
 	top: 100%;
@@ -143,7 +143,7 @@
     position: absolute;
     pointer-events: none;
     border-color: rgba(12, 85, 154, 0);
-    border-top-color: #0c559a;
+    border-top-color: #3498db;
     border-width: 10px;
     margin-left: -10px;
 }
@@ -184,13 +184,17 @@
 	margin:0 0 5px;
 	padding:0;
 }
-.VER_event .event_in_location p:not(.cat_color) {
-    padding: 0 10px;
+.VER_event .event_in_location div p:not(.cat_color),
+.VER_event .event_in_location div span,
+.VER_event .event_in_location span div {
+    padding: 0 30px;
     font-size: 95%;
 	line-height: 1.2;
+
 }
+
 .VER_event .event_in_location p.cat_color {
-	height: 6px;
+	height: 2px;
 	margin-bottom: 6px;
 }
 .VER_event .event_in_location p.time,
@@ -486,6 +490,7 @@
 	border-radius: 4px;
 	background-color: lightgray;
 	padding: 5px 10px;
+	z-index: 1;
 }
 .event_detail_box::-webkit-scrollbar{
     display: none;
@@ -496,5 +501,7 @@
 .event_detail a{
 	color:#357ae8 !important;
 }
-
+.title_card,.title {
+	color:#5e9516 !important;
+}
 

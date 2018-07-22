@@ -33,7 +33,7 @@ html {
 }
 body {
 	font-family: 'Raleway', "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "メイリオ" , Meiryo , "Meiryo UI" , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
-	#border: 12px solid #0c559a;
+	border: 12px solid #0c559a;
 	box-sizing: border-box;
 	overflow-x: hidden;
 	position: relative;
@@ -42,7 +42,6 @@ body {
 }
 .bodycontainer {
 	overflow-x: hidden;
-    padding: 12px;
 }
 a {
 	color: #464646;
@@ -1792,7 +1791,7 @@ a:hover img.purun {
     margin: 0 auto 20px;
 }
 .post .programme_list > li h2 {
-	font-size: 140%;
+	font-size: 140%;		
 }
 .post .programme_list.middle {
     margin-top: 0;
@@ -2687,7 +2686,7 @@ input[type="submit"].feas-submit-button:hover {
 	float: none;
 }
 .wpcf7-form .submit {
-	text-align: center;
+	text-align: center; 
 }
 .wpcf7-form input[type=submit] {
     font-size: 110%;
@@ -2695,10 +2694,10 @@ input[type="submit"].feas-submit-button:hover {
     min-width: 50%;
 }
 .wpcf7-form input[type=submit]:hover {
-	cursor: pointer;
+	cursor: pointer; 
 }
 .wpcf7-form span.wpcf7-not-valid-tip {
-	color: #f94e4e;
+	color: #f94e4e; 
 }
 .wpcf7-form div.wpcf7-validation-errors {
 	background: #fffde0;
@@ -2748,16 +2747,15 @@ form input[type="text"]{
 	height: 35px;
 }
 }
-/*newsletter*/
-#footer .nltbl{
-width: 100%;
-margin: 0 auto;
-text-align: center;
+/*newsletter*/	
+#footer .nltbl{	
+width: 100%;	
+margin: 0 auto;	
+text-align: center;	
+}	
+#footer .nltbl .ttd{	
+display: inline-block;	
+}	
+#footer .nltbl .ttd:nth-child(2){	
+padding: 0 6px;	
 }
-#footer .nltbl .ttd{
-display: inline-block;
-}
-#footer .nltbl .ttd:nth-child(2){
-padding: 0 6px;
-}
-
