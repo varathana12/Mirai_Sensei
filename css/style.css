@@ -61,7 +61,7 @@
 	display:table-cell;
 	vertical-align:middle;
 	border-bottom:1px solid #cbd3dc;
-	height:120px;
+	height:86px;
 	background: #fffceb;
 	padding: 10px;
 }
@@ -75,7 +75,7 @@
 	font-size: 95%;
 }
 .VER_event .event_in_location {
-	height:120px;
+	height:86px;
 	width:max-content;
 	border-bottom:1px solid #cbd3dc;
 	position:relative;
@@ -171,7 +171,7 @@
 -------------------------------------------------------------- */
 .VER_event .event_in_location .event_box {
 	position:absolute;
-	height:119px;
+	height:85px;
 	background-color:#f5f5f5;
 	overflow:hidden;
 	transition: all .3s;
@@ -184,10 +184,8 @@
 	margin:0 0 5px;
 	padding:0;
 }
-.VER_event .event_in_location div p:not(.cat_color),
-.VER_event .event_in_location div span,
-.VER_event .event_in_location span div {
-    padding: 0 30px;
+.VER_event .event_in_location div p:not(.cat_color){
+    padding: 0 10px;
     font-size: 95%;
 	line-height: 1.2;
 
@@ -444,11 +442,11 @@
 		height:79px;
 	}
     .divide_column_first{
-        height: 39px !important;
+        height: 28px !important;
         margin-top: 40px;
     }
     .divide_column_next{
-        height: 39px !important;
+        height: 28px !important;
     }
 	.VER_left_upper br {
 		display: block;

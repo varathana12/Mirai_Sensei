@@ -41,9 +41,9 @@ if(!MIRAI.main) {MIRAI.main = {};}
                 var count = 1;
                 var defaultHeightCard = 0
                 if($(document).width() <= 1023){
-                    defaultHeightCard = 80
+                    defaultHeightCard = 56
                 }else{
-                    defaultHeightCard = 120
+                    defaultHeightCard = 86
                 }
                 timetables.sort(func.sortLocation)
                 timetables.map(function(ele, index){
@@ -124,7 +124,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
                         html = $.parseHTML(html)
                         if(duration<100) {
                             $(html[1].getElementsByClassName('time')).css({'padding': 2})
-                            $(html[1].getElementsByClassName('title')).css({'font-size': 10})
+                            $(html[1].getElementsByClassName('title')).css({'font-size': 10,"padding-left":0})
 
                         }
                         if(next){
@@ -144,6 +144,19 @@ if(!MIRAI.main) {MIRAI.main = {};}
                         }
                         else{
                             listCardEvent = listCardEvent + html[1].outerHTML;
+                        }
+                        var height = (defaultHeightCard/listDuplicate.length) -1
+                        for(var i in listDuplicate){
+
+                           $(listDuplicate[i][1]).css({'height':height,'margin-top':(i*height)+i})
+
+
+                            if(listDuplicate.length>1){
+                                $(listDuplicate[i][1].getElementsByClassName('divider_card')).css({'display':'inline-flex'})
+                                $(listDuplicate[i][1].getElementsByClassName('title')).css({'font-size':10,'line-height':"22px",'padding':0})
+                            }
+                            listCardEvent = listCardEvent + listDuplicate[i][1].outerHTML
+
                         }
 
                         listCardEvent = listCardEvent + html[1].outerHTML
@@ -185,7 +198,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
                         if(duration<100) {
                             $(html[1].getElementsByClassName('time')).css({'padding': 2})
-                            $(html[1].getElementsByClassName('title')).css({'font-size': 10})
+                            $(html[1].getElementsByClassName('title')).css({'font-size': 10,"padding-left":0})
 
                         }
                         if(next){
@@ -221,15 +234,11 @@ if(!MIRAI.main) {MIRAI.main = {};}
                         count++
                     }
 
-                    var height = (defaultHeightCard/listDuplicate.length) -1
+                    var height = (defaultHeightCard/listDuplicate.length) -listDuplicate.length
                     for(var i in listDuplicate){
-                        if(i >0){
-                            $(listDuplicate[i][1]).css({'height':height,'margin-top':(i*height)+1})
-                        }else{
-                            $(listDuplicate[i][1]).css({'height':height,'margin-top':i*height})
-                        }
+                        $(listDuplicate[i][1]).css({'height':height,'margin-top':(i*height)+parseInt(i)})
 
-                        if(listDuplicate.length>2){
+                        if(listDuplicate.length>1){
                             $(listDuplicate[i][1].getElementsByClassName('divider_card')).css({'display':'inline-flex'})
                             $(listDuplicate[i][1].getElementsByClassName('title')).css({'font-size':10,'line-height':"22px",'padding':0})
                         }
@@ -340,13 +349,13 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
     func.detailEventTemplate = `
     <div event_id='even_id_is_{0}' class='event_detail_mask' onClick='VisionEventRegist.func.CloseDetail(this);'></div>
-    <div event_id='even_id_is_{0}' style="height: 450px;text-align: left" class='event_detail_box'>
-	<p class='event_detail cat_color' style='background-color:#9b59b6;'></p>
+    <div event_id='even_id_is_{0}' style="height: 450px;text-align: left;padding: 0 20px" class='event_detail_box'>
+	<p class='event_detail cat_color' style='background-color:#9b59b6;margin: 0 -20px'></p>
 	 <p><i class="fas fa-times close-icon" event_id='even_id_is_{0}' onClick='VisionEventRegist.func.CloseDetail(this);'></i></p>
 	<p class='event_detail time' style="width: 100%;text-align: center"><i class="fas fa-clock" style="padding-right: 5px;"> </i>{1}</p>
 	<p class='event_detail location' style="text-align: center;width: 100%"><i class="fas fa-map-marker-alt" style="padding-right: 5px"></i>{2}</p>
 	<p class='event_detail title' style="text-align: center;width: 100%">{4}</p>
-	<p class='event_detail description' style="text-align: left;padding-left: 30px;padding-right: 30px;">{3}</p>
+	<p class='event_detail description' style="text-align: left;">{3}</p>
 </div>
     `
 
