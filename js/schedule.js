@@ -92,7 +92,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
                     timelineHtml15 = $.parseHTML(timelineHtml15);
                     $("#time_line_15").append(timelineHtml15)
                 }
-                for(var i = Math.min(...start_time_16);i<Math.max(...end_time_16);i++){
+                for(var i = Math.min(...start_time_16);i<=Math.max(...end_time_16);i++){
                     widthLocation16 = widthLocation16 + 290
                     var timelineHtml16 = func.timelineTemplate.format(i+":00")
                     borderHtml16 = borderHtml16 + func.hourBorderTemplate.format()
@@ -123,6 +123,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
                         )
                         html = $.parseHTML(html)
                         if(duration<100) {
+                            $(html[1]).addClass('show_tooltip')
                             $(html[1].getElementsByClassName('time')).css({'padding': 2})
                             $(html[1].getElementsByClassName('title')).css({'font-size': 10,"padding-left":0})
 
@@ -174,6 +175,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
                         "my_width='"+widthLocation15+"'>"
                         +listCardEvent+listDetailEvent+borderHtml15+"</div>")
                 }
+                console.log(events.eventOn16th)
                 for(var key in events.eventOn16th){
                     var listCardEvent = "";
                     var listDetailEvent =""
@@ -197,6 +199,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
                         html = $.parseHTML(html)
 
                         if(duration<100) {
+                            $(html[1]).addClass('show_tooltip')
                             $(html[1].getElementsByClassName('time')).css({'padding': 2})
                             $(html[1].getElementsByClassName('title')).css({'font-size': 10,"padding-left":0})
 
@@ -336,7 +339,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
 
     func.cardEventMultipleTemplate=`
-    <div class='event_box' style='left:{0}; width:{1};' event_id='even_id_is_{4}' onClick='VisionEventRegist.func.OpenDetail(this);'>
+    <div class='event_box' title="{3}" style='left:{0}; width:{1};' event_id='even_id_is_{4}' onClick='VisionEventRegist.func.OpenDetail(this);'>
         <p class='event_detail cat_color' style='background-color:#9b59b6'></p>
         <div class="divider_card">
             <p class='event_detail time'>{2}</p>
@@ -366,6 +369,17 @@ if(!MIRAI.main) {MIRAI.main = {};}
 $(document).ready(function() {
 
     MIRAI.main.fetchEventsData('https://api.eventregist.com/v/2/timetable/get?event_uid=3b75c6deb1a72cf894781a8c5e4f0e64');
+    $( '.show_tooltip' ).tooltip({
+        position: {
+            my: "center bottom",
+            at: "center top-10",
+            collision: "flip",
+            using: function( position, feedback ) {
+                $( this ).addClass( feedback.vertical )
+                    .css( position );
+            }
+        }
+    });
 
 
 });
