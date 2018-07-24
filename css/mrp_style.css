@@ -196,7 +196,7 @@ input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hove
 #content {
 	float: right;
 	width: 645px;
-	margin-bottom: 20px;
+	#margin-bottom: 20px;
 }
 #content.wide {
 	width: 100%;
@@ -409,7 +409,8 @@ h2.banner-h{
 	clear: both;
 	margin-bottom: 5px;
 	overflow: hidden;
-	padding: 75px 0;
+	#padding: 75px 0;
+	padding: 0;
 }
 .post p {
 	margin-bottom: 15px;
@@ -1813,7 +1814,7 @@ li .post4b_contents {
 	height: 60px;
 }
 /*=====================================================================================
- hover img 
+ hover img
 =====================================================================================*/
 .post_img,
 .post2b_img,
@@ -3715,7 +3716,7 @@ mainImgをFixさせる
 	object-fit: cover;/**IE非対応**/
 	}
 }
-/*新着記事表示エフェクト対処*/		
+/*新着記事表示エフェクト対処*/
 .allfix .mainbgfix .catlistview {
 	top: inherit;
 	bottom: 100px !important;
@@ -4210,7 +4211,7 @@ Socialicon for Awesome icon
 .fix-bottombanner .c3thumbWrap {
 		width:96%;
     margin: 0 auto;
-}	
+}
 }
 /*TOPfixの場合レスポンシブはさせない仕様*/
 @media only screen and (max-width: 450px) {

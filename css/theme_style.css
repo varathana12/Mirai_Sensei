@@ -103,15 +103,11 @@ input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hove
 }
 .post .column2_60 {
 	display: inline-block;
-	margin: 5px 0;
+	#margin: 5px 0;
 	width: 100%;
 }
 }
 
-/* プラグイン・パーツ
--------------------------------------------------------------- */
-/* ヘッダー・フッター・ぱんくず
--------------------------------------------------------------- */
 #header-layout, #mainImgfix #header-layout {
     padding: 0;
 }
@@ -1014,7 +1010,9 @@ h1.title.top-loop, h1.title.bottom-loop {
 /* コンテンツ
 -------------------------------------------------------------- */
 .post {
-    padding: 0 0 75px;
+    #padding: 0 0 75px;
+
+    padding: 0;
 }
 .home #content {
     padding-top: 100px;
@@ -1791,7 +1789,7 @@ a:hover img.purun {
     margin: 0 auto 20px;
 }
 .post .programme_list > li h2 {
-	font-size: 140%;		
+	font-size: 140%;
 }
 .post .programme_list.middle {
     margin-top: 0;
@@ -2686,7 +2684,7 @@ input[type="submit"].feas-submit-button:hover {
 	float: none;
 }
 .wpcf7-form .submit {
-	text-align: center; 
+	text-align: center;
 }
 .wpcf7-form input[type=submit] {
     font-size: 110%;
@@ -2694,10 +2692,10 @@ input[type="submit"].feas-submit-button:hover {
     min-width: 50%;
 }
 .wpcf7-form input[type=submit]:hover {
-	cursor: pointer; 
+	cursor: pointer;
 }
 .wpcf7-form span.wpcf7-not-valid-tip {
-	color: #f94e4e; 
+	color: #f94e4e;
 }
 .wpcf7-form div.wpcf7-validation-errors {
 	background: #fffde0;
@@ -2747,15 +2745,15 @@ form input[type="text"]{
 	height: 35px;
 }
 }
-/*newsletter*/	
-#footer .nltbl{	
-width: 100%;	
-margin: 0 auto;	
-text-align: center;	
-}	
-#footer .nltbl .ttd{	
-display: inline-block;	
-}	
-#footer .nltbl .ttd:nth-child(2){	
-padding: 0 6px;	
+/*newsletter*/
+#footer .nltbl{
+width: 100%;
+margin: 0 auto;
+text-align: center;
+}
+#footer .nltbl .ttd{
+display: inline-block;
+}
+#footer .nltbl .ttd:nth-child(2){
+padding: 0 6px;
 }

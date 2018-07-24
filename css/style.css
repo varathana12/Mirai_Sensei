@@ -8,7 +8,7 @@
 /* レイアウト設定
 -------------------------------------------------------------- */
 .VER_wrapper {
-	width:90% !important;
+	#width:90% !important;
 	margin:0 auto;
 	border:1px solid #cbd3dc;
 	overflow:hidden;
@@ -110,7 +110,7 @@
 -------------------------------------------------------------- */
 #VER_date_button {
     text-align: center;
-    width: 90%;
+    #width: 90%;
     margin: 0 auto 20px;
 }
 #VER_date_button button {

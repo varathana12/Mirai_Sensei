@@ -499,7 +499,8 @@ if(!MIRAI.main) {MIRAI.main = {};}
     
     `
     func.hourBorderTemplate = `
-    <div class='half time_mat' style='width:144px;'></div><div class='hour time_mat' style='width:144px;'></div>
+    <div class='half time_mat' style='width:144px;background-color: white'></div>
+    <div class='hour time_mat' style='width:144px;background-color: white'></div>
     
     `;
 
@@ -545,6 +546,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
 })(jQuery);
 
 $(document).ready(function() {
+    console.log(document.getElementsByClassName('container'))
 
     MIRAI.main.fetchEventsData('https://api.eventregist.com/v/2/timetable/get?event_uid=3b75c6deb1a72cf894781a8c5e4f0e64');
     $( '.show_tooltip' ).tooltip({
