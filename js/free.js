@@ -38,7 +38,8 @@ if(!MIRAI.main) {MIRAI.main = {};}
                 var borderHalfHtml16=""
                 var widthLocation15 = 0;
                 var widthLocation16 = 0;
-                var count = 1;
+                var count15 = 0;
+                var count16=0
                 var defaultHeightCard = 0
                 if($(document).width() <= 1023){
                     defaultHeightCard = 56
@@ -104,164 +105,85 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
                     var listCardEvent = "";
                     var listDetailEvent =""
-                    var next = false
-                    var listDuplicate=[]
-                    var listReduce = []
+
                     var list_All_Duplicate = []
-                    var listArray = []
-                    var height_card = {}
-                    var list_object_duplicate = []
+                    var list_duplicate_index = []
+                    var is_found_index = false
                     for(var i in events.eventOn15th[key]){
-                       var timeStart = moment.duration(events.eventOn15th[key][i].start).asHours();
-                       var timeEnd = moment.duration(events.eventOn15th[key][i].end).asHours();
-                       var duration = (parseFloat(timeEnd - timeStart) * 290) -1
+                        var timeStart = moment.duration(events.eventOn15th[key][i].start).asHours();
+                        var timeEnd = moment.duration(events.eventOn15th[key][i].end).asHours();
+                        var duration = (parseFloat(timeEnd - timeStart) * 290) -1
                         var between = parseFloat(timeStart - parseInt(Math.min(...start_time_15)))
                         var left =  between * 290
                         var list_15 = events.eventOn15th[key]
 
 
 
-                        var html = func.cardEventMultipleTemplate.format(
-                            left+"px",
-                            duration+"px",
-                            events.eventOn15th[key][i].start + " ~ " + events.eventOn15th[key][i].end,
-                            events.eventOn15th[key][i].name,
-                            "15"+count
-                        )
-                        html = $.parseHTML(html)
 
-                        if(duration<100) {
-                            $(html[1]).addClass('show_tooltip')
-                            $(html[1].getElementsByClassName('title')).css({'font-size': 10,'-webkit-line-clamp':"4"})
-                            $(html[1].getElementsByClassName('title')).addClass('line-limit')
 
-                        }
-                        var Array = []
+
                         for(var k = parseInt(i)+1;k<list_15.length;k++){
 
-                               if(timeEnd > moment.duration(list_15[k].start).asHours()){
-                                   height_card
-                                    Array.push(k)
-                                   if(list_All_Duplicate.length>0){
-                                       list_All_Duplicate.push(list_15[k])
-                                   }else{
-                                       list_All_Duplicate.push(list_15[i])
-                                       list_All_Duplicate.push(list_15[k])
-                                   }
-                               }
-                        }
+                            if(timeEnd > moment.duration(list_15[k].start).asHours()){
+                                if(list_All_Duplicate.length>0){
+                                    list_All_Duplicate.push(list_15[k])
+                                    list_duplicate_index.push(k)
+                                }else{
+                                    list_All_Duplicate.push(list_15[i])
+                                    list_All_Duplicate.push(list_15[k])
+                                    list_duplicate_index.push(i)
+                                    list_duplicate_index.push(k)
 
-                        if(next){
-                            next= false
-                            listDuplicate.push({"html":html,"time_start":timeStart,"time_end":timeEnd})
-                            if(parseInt(i)+1 < events.eventOn15th[key].length) {
-                                if (timeEnd > moment.duration(events.eventOn15th[key][parseInt(i) + 1].start).asHours()) {
-                                    next = true
                                 }
                             }
                         }
-                        else if(parseInt(i)+1 < events.eventOn15th[key].length){
-                            if(timeEnd > moment.duration(events.eventOn15th[key][parseInt(i)+1].start).asHours()){
-                                next = true
-                                listDuplicate.push({"html":html,"time_start":timeStart,"time_end":timeEnd})
+                        is_found_index = false
+                        for(var index in list_duplicate_index){
+                            if(parseInt(i) === parseInt(list_duplicate_index[index])){
+                                is_found_index=true
+                                break
                             }
-                            else{
-
-                                listCardEvent = listCardEvent + html[1].outerHTML;
-                            }
-
                         }
-                        else{
-                            listCardEvent = listCardEvent + html[1].outerHTML;
-                        }
+                        if(!is_found_index){
+                            var html = func.cardEventMultipleTemplate.format(
+                                left+"px",
+                                duration+"px",
+                                events.eventOn15th[key][i].start + " ~ " + events.eventOn15th[key][i].end,
+                                events.eventOn15th[key][i].name,
+                                "15"+count15
+                            )
+                            html = $.parseHTML(html)
+                            $(html[1].getElementsByClassName('title')).addClass('line-limit')
+                            if(duration<100) {
+                                $(html[1].getElementsByClassName('title')).css({'font-size': 10,'-webkit-line-clamp':"4"})
 
-
-
-
-                        listDetailEvent = listDetailEvent + func.detailEventTemplate.format(
-                            "15"+count,
-                            events.eventOn15th[key][i].start + " ~ " + events.eventOn15th[key][i].end,
-                            events.eventOn15th[key][i].location,
-                            events.eventOn15th[key][i].description,
-                            events.eventOn15th[key][i].name
-                        )
-
-                        count++
-
-                    }
-
-
-                    for(var i in listDuplicate){
-                        if(parseInt(i)>1){
-                            for(var k=0;k<parseInt(i);k++){
-                                if(listDuplicate[k]['time_end'] < listDuplicate[i]['time_start']) {
-                                    if (i > -1) {
-                                        listReduce.push(listDuplicate[i])
-                                        listDuplicate.splice(i, 1);
-                                    }
-                                    break;
-                                }
+                            }else{
+                                $(html[1].getElementsByClassName('title')).css({'-webkit-line-clamp':"3"})
                             }
 
-                        }
-                    }
+                            listCardEvent = listCardEvent + html[1].outerHTML
 
-                    var height = (defaultHeightCard/listDuplicate.length) -1
-                    for(var i in listReduce){
-                        $(listReduce[i]["html"][1]).css({'height':height,'margin-top':(i*height)+parseInt(i)})
+                            listDetailEvent = listDetailEvent + func.detailEventTemplate.format(
+                                "15"+count15,
+                                events.eventOn15th[key][i].start + " ~ " + events.eventOn15th[key][i].end,
+                                events.eventOn15th[key][i].location,
+                                events.eventOn15th[key][i].description,
+                                events.eventOn15th[key][i].name
+                            )
 
-                        $(listReduce[i]["html"][1].getElementsByClassName('divider_card')).css({'display':'inline-flex'})
-                        $(listReduce[i]["html"][1].getElementsByClassName('title')).css({'font-size':10,'line-height':"22px",'padding':0})
-
-
-                        //listCardEvent = listCardEvent + listReduce[parseInt(i)]["html"][1].outerHTML
-
-                    }
-                    console.log(list_All_Duplicate.length)
-
-                    for(var i in listDuplicate){
-
-                        $(listDuplicate[i]["html"][1]).css({'height':height,'margin-top':(i*height)+parseInt(i)})
-
-
-                        if(listDuplicate.length>1){
-                            $(listDuplicate[i]["html"][1].getElementsByClassName('divider_card')).css({'display':'inline-flex'})
-                            $(listDuplicate[i]["html"][1].getElementsByClassName('title')).css({'font-size':10,'line-height':"22px",'padding':0})
+                            count15++
                         }
 
-                        //listCardEvent = listCardEvent + listDuplicate[parseInt(i)]["html"][1].outerHTML
 
 
 
                     }
+
 
                     var List_world = {}
-                    var list_html_duplicate = []
                     var list_level = []
                     for(var i in list_All_Duplicate){
-                        var timeStart = moment.duration(list_All_Duplicate[i].start).asHours();
                         var timeEnd = moment.duration(list_All_Duplicate[i].end).asHours();
-                        var duration = (parseFloat(timeEnd - timeStart) * 290) -1
-                        var between = parseFloat(timeStart - parseInt(Math.min(...start_time_15)))
-                        var left =  between * 290
-
-
-                        var html = func.cardEventMultipleTemplate.format(
-                            left+"px",
-                            duration+"px",
-                            list_All_Duplicate[i].start + " ~ " + list_All_Duplicate[i].end,
-                            list_All_Duplicate[i].name,
-                            "15"+count
-                        )
-                        html = $.parseHTML(html)
-
-
-                        if(duration<100) {
-                            $(html[1].getElementsByClassName('title')).css({'font-size': 10,'-webkit-line-clamp':"4"})
-                            $(html[1].getElementsByClassName('title')).addClass('line-limit')
-
-                        }
-                        //list_html_duplicate.push(html)
                         List_world[i] =[]
                         if(parseInt(i) === 0){
                             list_level[i]= 0
@@ -280,13 +202,13 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
                         }
 
+
                     }
-                    //console.log(list_level)
                     var list_height = []
                     for(var i in List_world){
-                        list_height[i]=defaultHeightCard/2
+                        list_height[i]=(defaultHeightCard/2)-1
                         for(var k in List_world[i]){
-                            list_height[k] = list_height[List_world[i][k]]?list_height[List_world[i][k]]/2:defaultHeightCard/2
+                            list_height[k] = list_height[List_world[i][k]]?(list_height[List_world[i][k]]/2)-1:(defaultHeightCard/2)-1
                         }
 
                     }
@@ -308,109 +230,205 @@ if(!MIRAI.main) {MIRAI.main = {};}
                             duration+"px",
                             list_All_Duplicate[i].start + " ~ " + list_All_Duplicate[i].end,
                             list_All_Duplicate[i].name,
-                            "15"+count
+                            "15"+count15
                         )
                         html = $.parseHTML(html)
 
 
                         if(duration<100) {
                             $(html[1].getElementsByClassName('title')).css({'font-size': 10,'-webkit-line-clamp':"4"})
-                            $(html[1].getElementsByClassName('title')).addClass('line-limit')
+
 
                         }
-                        $(html[1]).css({'height':list_height[i],'margin-top':(list_level[i]*list_height[i])})
+                        $(html[1]).css({'height':list_height[i],'margin-top':(list_level[i]*list_height[i])+list_level[i]})
 
-                        $(html[1].getElementsByClassName('divider_card')).css({'display':'inline-flex'})
-                        $(html[1].getElementsByClassName('title')).css({'font-size':10,'line-height':"22px",'padding':0})
+                        $(html[1].getElementsByClassName('time')).css({'margin-bottom':0})
+                        $(html[1].getElementsByClassName('title')).css({'font-size':10,'line-height':"22px",'line-height':"14px",'margin-top':-2})
 
                         listCardEvent = listCardEvent + html[1].outerHTML
+                        listDetailEvent = listDetailEvent + func.detailEventTemplate.format(
+                            "15"+count15,
+                            list_All_Duplicate[i].start + " ~ " + list_All_Duplicate[i].end,
+                            list_All_Duplicate[i].location,
+                            list_All_Duplicate[i].description,
+                            list_All_Duplicate[i].name
+                        )
+                        count15++
 
                     }
-
-
-
 
                     $('#in_location_15').append(" <div class='event_in_location' style='display: inline-flex;margin-left: 1px' " +
                         "my_width='"+widthLocation15+"'>"
                         +listCardEvent+listDetailEvent+borderHtml15+"</div>")
                 }
-
+/*--------------------------------------------------------------*/
                 for(var key in events.eventOn16th){
                     var listCardEvent = "";
                     var listDetailEvent =""
-                    var listDuplicate=[]
-                    var next = false
+
+                    var list_All_Duplicate = []
+                    var list_duplicate_index = []
+                    var is_found_index = false
                     for(var i in events.eventOn16th[key]){
                         var timeStart = moment.duration(events.eventOn16th[key][i].start).asHours();
                         var timeEnd = moment.duration(events.eventOn16th[key][i].end).asHours();
                         var duration = (parseFloat(timeEnd - timeStart) * 290) -1
                         var between = parseFloat(timeStart - parseInt(Math.min(...start_time_16)))
                         var left =  between * 290
+                        var list_16 = events.eventOn16th[key]
 
 
+
+
+
+
+                        for(var k = parseInt(i)+1;k<list_16.length;k++){
+
+                            if(timeEnd > moment.duration(list_16[k].start).asHours()){
+                                if(list_All_Duplicate.length>0){
+                                    list_All_Duplicate.push(list_16[k])
+                                    list_duplicate_index.push(k)
+                                }else{
+                                    list_All_Duplicate.push(list_16[i])
+                                    list_All_Duplicate.push(list_16[k])
+                                    list_duplicate_index.push(i)
+                                    list_duplicate_index.push(k)
+                                }
+                            }
+                        }
+                        is_found_index = false
+                        for(var m in list_duplicate_index){
+                            if(parseInt(m) === list_duplicate_index[m]){
+                                is_found_index = true
+                                break;
+                            }
+                        }
+                        if(!is_found_index){
                             var html = func.cardEventMultipleTemplate.format(
+                                left+"px",
+                                duration+"px",
+                                events.eventOn16th[key][i].start + " ~ " + events.eventOn16th[key][i].end,
+                                events.eventOn16th[key][i].name,
+                                "16"+count16
+                            )
+                            html = $.parseHTML(html)
+                            $(html[1].getElementsByClassName('title')).addClass('line-limit')
+                            if(duration<100) {
+                                $(html[1].getElementsByClassName('title')).css({'font-size': 10,'-webkit-line-clamp':"4"})
+
+
+                            }else{
+                                $(html[1].getElementsByClassName('title')).css({'-webkit-line-clamp':"3"})
+                            }
+
+
+                            listCardEvent = listCardEvent + html[1].outerHTML
+
+                            listDetailEvent = listDetailEvent + func.detailEventTemplate.format(
+                                "16"+count16,
+                                events.eventOn16th[key][i].start + " ~ " + events.eventOn16th[key][i].end,
+                                events.eventOn16th[key][i].location,
+                                events.eventOn16th[key][i].description,
+                                events.eventOn16th[key][i].name
+                            )
+                            count16++;
+                        }
+
+
+
+
+
+                    }
+
+
+                    var List_world = {}
+                    var list_level = []
+                    for(var i in list_All_Duplicate){
+                        var timeEnd = moment.duration(list_All_Duplicate[i].end).asHours();
+
+
+
+
+
+                        List_world[i] =[]
+                        if(parseInt(i) === 0){
+                            list_level[i]= 0
+                        }
+                        for(var k = parseInt(i)+1;k<list_All_Duplicate.length;k++){
+
+                            if(timeEnd > moment.duration(list_All_Duplicate[k].start).asHours()){
+                                List_world[i].push(k)
+
+                                if(list_level[i] === Math.min(...list_level)){
+                                    list_level[k]=Math.min(...list_level)+1
+                                }else{
+                                    list_level[k]=Math.min(...list_level)
+                                }
+                            }
+
+                        }
+
+                    }
+                    var list_height = []
+                    for(var i in List_world){
+                        list_height[i]=(defaultHeightCard/2)-1
+                        for(var k in List_world[i]){
+                            list_height[k] = list_height[List_world[i][k]]?(list_height[List_world[i][k]]/2)-1:(defaultHeightCard/2)-1
+                        }
+
+                    }
+                    var list_final = []
+                    for(var i in list_All_Duplicate){
+                        list_final.push({'height':list_height[i],'level':list_level[i],'html':list_All_Duplicate[i]})
+
+
+
+                        var timeStart = moment.duration(list_All_Duplicate[i].start).asHours();
+                        var timeEnd = moment.duration(list_All_Duplicate[i].end).asHours();
+                        var duration = (parseFloat(timeEnd - timeStart) * 290) -1
+                        var between = parseFloat(timeStart - parseInt(Math.min(...start_time_15)))
+                        var left =  between * 290
+
+
+                        var html = func.cardEventMultipleTemplate.format(
                             left+"px",
                             duration+"px",
-                            events.eventOn16th[key][i].start + " ~ " + events.eventOn16th[key][i].end,
-                            events.eventOn16th[key][i].name,
-                            "16"+count
+                            list_All_Duplicate[i].start + " ~ " + list_All_Duplicate[i].end,
+                            list_All_Duplicate[i].name,
+                            "16"+count16
                         )
                         html = $.parseHTML(html)
 
+
                         if(duration<100) {
-                            $(html[1]).addClass('show_tooltip')
-                            $(html[1].getElementsByClassName('time')).css({'padding': 2})
                             $(html[1].getElementsByClassName('title')).css({'font-size': 10,'-webkit-line-clamp':"4"})
                             $(html[1].getElementsByClassName('title')).addClass('line-limit')
 
                         }
-                        if(next){
-                            next= false
-                            listDuplicate.push(html)
-                            if(timeEnd > moment.duration(events.eventOn16th[key][parseInt(i)+1].start).asHours()){
-                                next = true
+                        $(html[1]).css({'height':list_height[i],'margin-top':(list_level[i]*list_height[i])+list_level[i]})
 
-                            }
+                        $(html[1].getElementsByClassName('time')).css({'margin-bottom':0})
+                        $(html[1].getElementsByClassName('title')).css({'font-size':10,'line-height':"22px",
+                            'line-height':"14px",'margin-top':-2})
 
-                        }
-                        else if(parseInt(i)+1 < events.eventOn16th[key].length){
-                            if(timeEnd > moment.duration(events.eventOn16th[key][parseInt(i)+1].start).asHours()){
-                                //$(html[1]).addClass('divide_column_first')
-                                next = true
-
-                                listDuplicate.push(html)
-
-                            }
-
-                        }
-                        else{
-                            listCardEvent = listCardEvent + html[1].outerHTML;
-                        }
+                        listCardEvent = listCardEvent + html[1].outerHTML
 
                         listDetailEvent = listDetailEvent + func.detailEventTemplate.format(
-                            "16"+count,
-                            events.eventOn16th[key][i].start + " ~ " + events.eventOn16th[key][i].end,
-                            events.eventOn16th[key][i].location,
-                            events.eventOn16th[key][i].description,
-                            events.eventOn16th[key][i].name
+                            "16"+count16,
+                            list_All_Duplicate[i].start + " ~ " + list_All_Duplicate[i].end,
+                            list_All_Duplicate[i].location,
+                            list_All_Duplicate[i].description,
+                            list_All_Duplicate[i].name
                         )
-                        count++
-                    }
-
-                    var height = (defaultHeightCard/listDuplicate.length) -listDuplicate.length
-                    for(var i in listDuplicate){
-                        $(listDuplicate[i][1]).css({'height':height,'margin-top':(i*height)+parseInt(i)})
-
-                        if(listDuplicate.length>1){
-                            $(listDuplicate[i][1].getElementsByClassName('divider_card')).css({'display':'inline-flex'})
-                            $(listDuplicate[i][1].getElementsByClassName('title')).css({'font-size':10,'line-height':"22px",'padding':0})
-                        }
-                        listCardEvent = listCardEvent + listDuplicate[i][1].outerHTML
+                        count16++
 
                     }
 
-                    $('#in_location_16').append(" <div class='event_in_location' style='display: inline-flex;margin-left: 1px'" +
-                        " my_width='"+widthLocation16+"'>"
+
+
+
+                    $('#in_location_16').append(" <div class='event_in_location' style='display: inline-flex;margin-left: 1px' " +
+                        "my_width='"+widthLocation16+"'>"
                         +listCardEvent+listDetailEvent+borderHtml16+"</div>")
                 }
             },
@@ -431,7 +449,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
         return 0;
     }
 
-     func.compare = function(a,b) {
+    func.compare = function(a,b) {
         if (a.start + a.end < b.start+b.end)
             return -1;
         if (a.start+a.end > b.start+b.end)

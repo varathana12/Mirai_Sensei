@@ -71,7 +71,7 @@
 	width: 85%;
 	overflow:hidden;
 	overflow-x: scroll;
-	white-space:nowrap;
+	#white-space:nowrap;
 	font-size: 95%;
 }
 .VER_event .event_in_location {
@@ -186,7 +186,7 @@
 }
 .VER_event .event_in_location div p:not(.cat_color){
     padding: 0 10px;
-    font-size: 95%;
+    font-size: 80%;
 	line-height: 1.2;
 
 }
@@ -502,6 +502,13 @@
 .title_card,.title {
 	color:#5e9516 !important;
 }
+
+.line-limit{
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+
 
 /*---------------tooltip------------*/
 
