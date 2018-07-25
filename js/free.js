@@ -430,6 +430,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
                         "my_width='"+widthLocation16+"'>"
                         +listCardEvent+listDetailEvent+borderHtml16+"</div>")
                 }
+                $('.event_detail_box a').attr("target","_top")
             },
             error: function(error) {
                 console.log(error);
@@ -546,6 +547,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
 $(document).ready(function() {
     console.log(document.getElementsByClassName('container'))
+
 
     MIRAI.main.fetchEventsData('https://api.eventregist.com/v/2/timetable/get?event_uid=3b75c6deb1a72cf894781a8c5e4f0e64');
     $( '.show_tooltip' ).tooltip({
