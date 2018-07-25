@@ -243,7 +243,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
                         $(html[1]).css({'height':list_height[i],'margin-top':(list_level[i]*list_height[i])+list_level[i]})
 
                         $(html[1].getElementsByClassName('time')).css({'margin-bottom':0})
-                        $(html[1].getElementsByClassName('title')).css({'font-size':10,'line-height':"22px",'line-height':"14px",'margin-top':-2})
+                        $(html[1].getElementsByClassName('title')).css({'font-size':10,'line-height':"20px",'margin-top':0})
 
                         listCardEvent = listCardEvent + html[1].outerHTML
                         listDetailEvent = listDetailEvent + func.detailEventTemplate.format(
@@ -408,8 +408,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
                         $(html[1]).css({'height':list_height[i],'margin-top':(list_level[i]*list_height[i])+list_level[i]})
 
                         $(html[1].getElementsByClassName('time')).css({'margin-bottom':0})
-                        $(html[1].getElementsByClassName('title')).css({'font-size':10,'line-height':"22px",
-                            'line-height':"14px",'margin-top':-2})
+                        $(html[1].getElementsByClassName('title')).css({'font-size':10,'line-height':"20px",'margin-top':0})
 
                         listCardEvent = listCardEvent + html[1].outerHTML
 
