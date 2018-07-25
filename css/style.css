@@ -490,10 +490,10 @@
 	padding: 5px 10px;
 	z-index: 1;
 }
-.event_detail_box::-webkit-scrollbar{
+.event_detail_box::-webkit-scrollbar,.VER_schedule_scroll_wrapper::-webkit-scrollbar{
     display: none;
 }
-.event_detail_box{
+.event_detail_box,.VER_schedule_scroll_wrapper{
     -ms-overflow-style: none;
 }
 .event_detail a{

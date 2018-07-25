@@ -42,7 +42,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
                 var count16=0
                 var defaultHeightCard = 0
                 if($(document).width() <= 1023){
-                    defaultHeightCard = 56
+                    defaultHeightCard = 80
                 }else{
                     defaultHeightCard = 86
                 }

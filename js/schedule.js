@@ -40,11 +40,9 @@ if(!MIRAI.main) {MIRAI.main = {};}
                 var widthLocation16 = 0;
                 var count = 1;
                 var defaultHeightCard = 0
-                if($(document).width() <= 1023){
-                    defaultHeightCard = 56
-                }else{
+
                     defaultHeightCard = 86
-                }
+               
                 timetables.sort(func.sortLocation)
                 timetables.map(function(ele, index){
                     var startTime = moment(ele.start).format('HH:mm'),
