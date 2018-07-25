@@ -2626,7 +2626,8 @@ body {
 	font-size: 90%;
 }
 #content.wide {
-	width: 96%;
+	#width: 96%;
+	width: 100%;
 	margin: 0 auto;
 	float: none;
 }
