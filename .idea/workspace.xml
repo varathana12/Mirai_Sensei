@@ -32,8 +32,11 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="147" column="108" selection-start-line="147" selection-start-column="108" selection-end-line="147" selection-end-column="108" />
+            <state relative-caret-position="401">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -466,7 +469,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.free.html">
+  <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration name="free.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/schedule_timetable/free.html" />
     <configuration name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" nameIsGenerated="true" uri="http://localhost:63342/schedule_timetable/index.html" />
     <configuration name="mirai.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/schedule_timetable/mirai.html" />
@@ -530,12 +533,12 @@
       <workItem from="1532573274177" duration="25000" />
       <workItem from="1532579443043" duration="3516000" />
       <workItem from="1532586269636" duration="2498000" />
-      <workItem from="1532625962052" duration="256000" />
+      <workItem from="1532625962052" duration="477000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159301000" />
+    <option name="totallyTimeSpent" value="159522000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="670" extended-state="0" />
@@ -548,7 +551,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.45062837" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.45062837" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1141,8 +1144,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="147" column="108" selection-start-line="147" selection-start-column="108" selection-end-line="147" selection-end-column="108" />
+        <state relative-caret-position="401">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
