@@ -53,34 +53,36 @@ if(!MIRAI.main) {MIRAI.main = {};}
                         startDate = moment(ele.start).format('DD'),
                         endDate = moment(ele.end).format('DD'),
                         locationName = ele.location
-                    if(startDate === "15"){
-                        start_time_15.push(startTime.split(":")[0])
-                        end_time_15.push(endTime.split(":")[0])
-                        if(!events.eventOn15th.hasOwnProperty(locationName)){
-                            events.eventOn15th[locationName] =[]
-                            var locationElementHtml = func.locationTemplate.format(
-                                locationName
-                            )
-                            locationElementHtml = $.parseHTML(locationElementHtml);
-                            $("#location15").append(locationElementHtml)
+                    if(locationName) {
+                        if (startDate === "15") {
+                            start_time_15.push(startTime.split(":")[0])
+                            end_time_15.push(endTime.split(":")[0])
+                            if (!events.eventOn15th.hasOwnProperty(locationName)) {
+                                events.eventOn15th[locationName] = []
+                                var locationElementHtml = func.locationTemplate.format(
+                                    locationName
+                                )
+                                locationElementHtml = $.parseHTML(locationElementHtml);
+                                $("#location15").append(locationElementHtml)
+                            }
+                            ele["start"] = startTime
+                            ele["end"] = endTime
+                            events.eventOn15th[locationName].push(ele)
+                        } else {
+                            start_time_16.push(startTime.split(":")[0])
+                            end_time_16.push(endTime.split(":")[0])
+                            if (!events.eventOn16th.hasOwnProperty(locationName)) {
+                                events.eventOn16th[locationName] = []
+                                var locationElementHtml = func.locationTemplate.format(
+                                    locationName
+                                )
+                                locationElementHtml = $.parseHTML(locationElementHtml);
+                                $("#location16").append(locationElementHtml)
+                            }
+                            ele["start"] = startTime
+                            ele["end"] = endTime
+                            events.eventOn16th[locationName].push(ele)
                         }
-                        ele["start"] = startTime
-                        ele["end"] = endTime
-                        events.eventOn15th[locationName].push(ele)
-                    }else{
-                        start_time_16.push(startTime.split(":")[0])
-                        end_time_16.push(endTime.split(":")[0])
-                        if(!events.eventOn16th.hasOwnProperty(locationName)){
-                            events.eventOn16th[locationName] = []
-                            var locationElementHtml = func.locationTemplate.format(
-                                locationName
-                            )
-                            locationElementHtml = $.parseHTML(locationElementHtml);
-                            $("#location16").append(locationElementHtml)
-                        }
-                        ele["start"] = startTime
-                        ele["end"] = endTime
-                        events.eventOn16th[locationName].push(ele)
                     }
                 })
 
