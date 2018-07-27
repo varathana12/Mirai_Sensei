@@ -5,8 +5,6 @@
     box-sizing: border-box;
 }
 
-/* レイアウト設定
--------------------------------------------------------------- */
 .VER_wrapper {
 	#width:90% !important;
 	margin:0 auto;
@@ -510,8 +508,13 @@
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 }
+.event_detail_box a {
+	color:blue !important;
+}
 
-
+#VER_date_button button{
+	width: 46%;
+}
 /*---------------tooltip------------*/
 
 .ui-tooltip {
