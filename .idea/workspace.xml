@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97fef913-f76c-4f0c-bbb3-bf4bc8db2e1d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/free.html" beforeDir="false" afterPath="$PROJECT_DIR$/free.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/event-regist.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/event-regist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/free.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/free.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing.html" beforeDir="false" afterPath="$PROJECT_DIR$/testing.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -46,8 +41,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-753">
-              <caret line="105" column="38" lean-forward="true" selection-start-line="105" selection-start-column="38" selection-end-line="105" selection-end-column="38" />
+            <state relative-caret-position="252">
+              <caret line="172" column="115" selection-start-line="172" selection-start-column="115" selection-end-line="172" selection-end-column="115" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#1;n#div#0;n#article#0;n#section#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
@@ -456,8 +451,8 @@
         <option value="$PROJECT_DIR$/js/free.js" />
         <option value="$PROJECT_DIR$/free.html" />
         <option value="$PROJECT_DIR$/js/event-regist.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/testing.html" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -600,18 +595,18 @@
       <workItem from="1532653940581" duration="846000" />
       <workItem from="1532668064682" duration="7681000" />
       <workItem from="1533021427116" duration="398000" />
-      <workItem from="1534033771005" duration="5606000" />
+      <workItem from="1534033771005" duration="5712000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174053000" />
+    <option name="totallyTimeSpent" value="174159000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="670" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23271376" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23271376" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
@@ -1334,8 +1329,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-753">
-          <caret line="105" column="38" lean-forward="true" selection-start-line="105" selection-start-column="38" selection-end-line="105" selection-end-column="38" />
+        <state relative-caret-position="252">
+          <caret line="172" column="115" selection-start-line="172" selection-start-column="115" selection-end-line="172" selection-end-column="115" />
           <folding>
             <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#1;n#div#0;n#article#0;n#section#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
