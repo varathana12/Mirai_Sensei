@@ -249,10 +249,22 @@ VisionEventRegist.func.ChangeDate = function(obj) {
 
 VisionEventRegist.func.OpenDetail = function(obj) {
 	$('body,.VER_schedule_scroll_wrapper').css({'overflow':"hidden"})
-	var target = jQuery( obj ).attr( 'event_id' );
+	/*var target = jQuery( obj ).attr( 'event_id' );
 	var mask = jQuery( '.event_detail_mask[event_id="' + target + '"]' );
 	var box = jQuery( '.event_detail_box[event_id="' + target + '"]' );
-	var wrapper = jQuery( box ).closest( '.VER_wrapper' );
+	var wrapper = jQuery( box ).closest( '.VER_wrapper' );*/
+    var date = $(obj).attr('data-date')
+	var time = $(obj).attr('data-time')
+    var title = $(obj).attr('data-title')
+    var location = $(obj).attr('data-location')
+    var description = $(obj).attr('data-description')
+	var box = jQuery('#event_detail'+date)
+	console.log($(obj))
+    var mask = jQuery( '#event_mask'+date)
+    jQuery('#event_detail'+date+' .time').html('<i class="fas fa-clock" style="padding-right: 5px;"></i>'+time)
+    jQuery('#event_detail'+date+' .title').html(title)
+    jQuery('#event_detail'+date+' .location').html('<i class="fas fa-map-marker-alt" style="padding-right: 5px"></i>'+location)
+    jQuery('#event_detail'+date+' .description').html(description)
 
 	/*var top_position = jQuery( wrapper ).offset().top - jQuery( window ).scrollTop();
 	if( top_position <= 30 )
@@ -271,10 +283,12 @@ VisionEventRegist.func.OpenDetail = function(obj) {
 
 VisionEventRegist.func.CloseDetail = function(obj) {
 	$('body, .VER_schedule_scroll_wrapper').css({'overflow':'auto'})
-	var target = jQuery( obj ).attr( 'event_id' );
-	var mask = jQuery( '.event_detail_mask[event_id="' + target + '"]' );
-	var box = jQuery( '.event_detail_box[event_id="' + target + '"]' );
+	//var target = jQuery( obj ).attr( 'event_id' );
+	//var mask = jQuery( '.event_detail_mask[event_id="' + target + '"]' );
+	//var box = jQuery( '.event_detail_box[event_id="' + target + '"]' );
+    var box = jQuery('#event_detail'+obj)
 
+    var mask = jQuery( '#event_mask'+obj)
 	jQuery( mask ).fadeOut(250);
 	jQuery( box ).fadeOut(250);
 }

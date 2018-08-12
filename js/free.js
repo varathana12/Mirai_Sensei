@@ -152,7 +152,10 @@ if(!MIRAI.main) {MIRAI.main = {};}
                                 duration+"px",
                                 events.eventOn15th[key][i].start + " ~ " + events.eventOn15th[key][i].end,
                                 events.eventOn15th[key][i].name,
-                                "15"+count15
+                                "15",
+                                events.eventOn15th[key][i].location.toString().replace(new RegExp('"','g'),"'"),
+                                events.eventOn15th[key][i].description.toString().replace(new RegExp('"','g'),"'")
+
                             )
                             html = $.parseHTML(html)
                             $(html[1].getElementsByClassName('title')).addClass('line-limit')
@@ -232,7 +235,9 @@ if(!MIRAI.main) {MIRAI.main = {};}
                             duration+"px",
                             list_All_Duplicate[i].start + " ~ " + list_All_Duplicate[i].end,
                             list_All_Duplicate[i].name,
-                            "15"+count15
+                            "15",
+                            list_All_Duplicate[i].location.toString().replace(new RegExp('"','g'),"'"),
+                            list_All_Duplicate[i].description.toString().replace(new RegExp('"','g'),"'")
                         )
                         html = $.parseHTML(html)
 
@@ -261,9 +266,9 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
                     $('#in_location_15').append(" <div class='event_in_location' style='display: inline-flex;margin-left: 1px' " +
                         "my_width='"+widthLocation15+"'>"
-                        +listCardEvent+listDetailEvent+borderHtml15+"</div>")
+                        +listCardEvent+borderHtml15+"</div>")
                 }
-/*--------------------------------------------------------------*/
+                /*--------------------------------------------------------------*/
                 for(var key in events.eventOn16th){
                     var listCardEvent = "";
                     var listDetailEvent =""
@@ -311,7 +316,9 @@ if(!MIRAI.main) {MIRAI.main = {};}
                                 duration+"px",
                                 events.eventOn16th[key][i].start + " ~ " + events.eventOn16th[key][i].end,
                                 events.eventOn16th[key][i].name,
-                                "16"+count16
+                                "16",
+                                events.eventOn16th[key][i].location.toString().replace(new RegExp('"','g'),"'"),
+                                events.eventOn16th[key][i].description.toString().replace(new RegExp('"','g'),"'")
                             )
                             html = $.parseHTML(html)
                             $(html[1].getElementsByClassName('title')).addClass('line-limit')
@@ -397,7 +404,9 @@ if(!MIRAI.main) {MIRAI.main = {};}
                             duration+"px",
                             list_All_Duplicate[i].start + " ~ " + list_All_Duplicate[i].end,
                             list_All_Duplicate[i].name,
-                            "16"+count16
+                            "16",
+                            list_All_Duplicate[i].location.toString().replace(new RegExp('"','g'),"'"),
+                            list_All_Duplicate[i].description.toString().replace(new RegExp('"','g'),"'")
                         )
                         html = $.parseHTML(html)
 
@@ -430,7 +439,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
                     $('#in_location_16').append(" <div class='event_in_location' style='display: inline-flex;margin-left: 1px' " +
                         "my_width='"+widthLocation16+"'>"
-                        +listCardEvent+listDetailEvent+borderHtml16+"</div>")
+                        +listCardEvent+borderHtml16+"</div>")
                 }
                 $('.event_detail_box a').attr("target","_top")
             },
@@ -497,7 +506,6 @@ if(!MIRAI.main) {MIRAI.main = {};}
         <p class='event_detail title'>{5}</p>
         <p class='btn'>イベント概要・会場</p>
     </div>
-
     
     `
     func.hourBorderTemplate = `
@@ -520,7 +528,9 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
 
     func.cardEventMultipleTemplate=`
-    <div class='event_box' title="{3}" style='left:{0}; width:{1};' event_id='even_id_is_{4}' onClick='VisionEventRegist.func.OpenDetail(this);'>
+    <div class='event_box' title="{3}" style='left:{0}; width:{1};' event_id='even_id_is_{4}' 
+    data-description="{6}" data-location="{5}" data-title="{3}" data-time="{2}" data-date="{4}" 
+     onClick='VisionEventRegist.func.OpenDetail(this);'>
         <p class='event_detail cat_color' style='background-color:#9b59b6'></p>
         <div class="divider_card">
             <p class='event_detail time' style="white-space: nowrap">{2}</p>
