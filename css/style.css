@@ -45,7 +45,7 @@
     #height: 600px;
     overflow: hidden;
     overflow-y: scroll;
-	height: 80%;
+	height: calc(80% - 36px) !important;
 }
 .VER_locations {
 	display: table;

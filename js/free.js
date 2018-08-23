@@ -168,13 +168,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
                             listCardEvent = listCardEvent + html[1].outerHTML
 
-                            listDetailEvent = listDetailEvent + func.detailEventTemplate.format(
-                                "15"+count15,
-                                events.eventOn15th[key][i].start + " ~ " + events.eventOn15th[key][i].end,
-                                events.eventOn15th[key][i].location,
-                                events.eventOn15th[key][i].description,
-                                events.eventOn15th[key][i].name
-                            )
+
 
                             count15++
                         }
@@ -253,13 +247,6 @@ if(!MIRAI.main) {MIRAI.main = {};}
                         $(html[1].getElementsByClassName('title')).css({'font-size':10,'line-height':"20px",'margin-top':0})
 
                         listCardEvent = listCardEvent + html[1].outerHTML
-                        listDetailEvent = listDetailEvent + func.detailEventTemplate.format(
-                            "15"+count15,
-                            list_All_Duplicate[i].start + " ~ " + list_All_Duplicate[i].end,
-                            list_All_Duplicate[i].location,
-                            list_All_Duplicate[i].description,
-                            list_All_Duplicate[i].name
-                        )
                         count15++
 
                     }
@@ -333,13 +320,7 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
                             listCardEvent = listCardEvent + html[1].outerHTML
 
-                            listDetailEvent = listDetailEvent + func.detailEventTemplate.format(
-                                "16"+count16,
-                                events.eventOn16th[key][i].start + " ~ " + events.eventOn16th[key][i].end,
-                                events.eventOn16th[key][i].location,
-                                events.eventOn16th[key][i].description,
-                                events.eventOn16th[key][i].name
-                            )
+
                             count16++;
                         }
 
@@ -423,13 +404,6 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
                         listCardEvent = listCardEvent + html[1].outerHTML
 
-                        listDetailEvent = listDetailEvent + func.detailEventTemplate.format(
-                            "16"+count16,
-                            list_All_Duplicate[i].start + " ~ " + list_All_Duplicate[i].end,
-                            list_All_Duplicate[i].location,
-                            list_All_Duplicate[i].description,
-                            list_All_Duplicate[i].name
-                        )
                         count16++
 
                     }
@@ -557,11 +531,12 @@ if(!MIRAI.main) {MIRAI.main = {};}
 
 })(jQuery);
 
+MIRAI.main.fetchEventsData('https://api.eventregist.com/v/2/timetable/get?event_uid=3b75c6deb1a72cf894781a8c5e4f0e64');
 $(document).ready(function() {
     console.log(document.getElementsByClassName('container'))
 
 
-    MIRAI.main.fetchEventsData('https://api.eventregist.com/v/2/timetable/get?event_uid=3b75c6deb1a72cf894781a8c5e4f0e64');
+
     $( '.show_tooltip' ).tooltip({
         position: {
             my: "center bottom",
