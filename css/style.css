@@ -38,7 +38,7 @@
 	display: block;
 	width: 100%;
 	box-sizing: border-box;
-	overflow:scroll;
+	overflow: hidden;
 	-webkit-overflow-scrolling:touch;
 	/*margin-top: -6px;*/
 }
