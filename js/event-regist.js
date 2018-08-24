@@ -249,6 +249,7 @@ VisionEventRegist.func.ChangeDate = function(obj) {
 
 VisionEventRegist.func.OpenDetail = function(obj) {
 	$('body,.VER_schedule_scroll_wrapper').css({'overflow':"hidden"})
+	$('.VER_schedule').css({'-webkit-overflow-scrolling': 'unset'})
 	/*var target = jQuery( obj ).attr( 'event_id' );
 	var mask = jQuery( '.event_detail_mask[event_id="' + target + '"]' );
 	var box = jQuery( '.event_detail_box[event_id="' + target + '"]' );
@@ -283,6 +284,7 @@ VisionEventRegist.func.OpenDetail = function(obj) {
 
 VisionEventRegist.func.CloseDetail = function(obj) {
 	$('body, .VER_schedule_scroll_wrapper').css({'overflow':'auto'})
+    $('.VER_schedule').css({'-webkit-overflow-scrolling': 'touch'})
 	//var target = jQuery( obj ).attr( 'event_id' );
 	//var mask = jQuery( '.event_detail_mask[event_id="' + target + '"]' );
 	//var box = jQuery( '.event_detail_box[event_id="' + target + '"]' );
