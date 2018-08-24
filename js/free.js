@@ -21,6 +21,8 @@ if(!MIRAI.main) {MIRAI.main = {};}
             type: 'GET',
             dataType: 'json',
             success: function(res) {
+                $('#loader').css({'display':'none'})
+
                 var list_location=[]
                 var response = JSON.parse(JSON.stringify(res)),
                     timetables = response.event_dates[0].timetables,
